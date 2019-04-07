@@ -77,7 +77,7 @@ def _has_dns_propagated(name, token):
 # https://api.cloudflare.com/#zone-list-zones
 def _get_zone_id(domain):
     tld = get_tld('http://' + domain)
-    url = "https://api.cloudflare.com/client/v4/zones?name={0}".format(tld)
+    url = "https://api.cloudflare.com/client/v4/zones?name={0}".format(domain) 
     r = requests.get(url, headers=CF_HEADERS)
     r.raise_for_status()
     return r.json()['result'][0]['id']
